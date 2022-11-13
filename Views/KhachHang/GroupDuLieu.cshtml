@@ -1,0 +1,17 @@
+﻿@using WebBanHang.Models;
+@model List<ThanhVien>
+@{
+    ViewBag.Title = "GroupDuLieu";
+}
+
+<h2>GroupDuLieu thành viên theo mã loại thành viên </h2>
+
+@foreach(var GroupLTV in Model.GroupBy(n=> n.LoaiThanhVien))
+            {       
+                <div>@GroupLTV.Key.TenLoai</div>
+                foreach (var item in GroupLTV)
+                {
+                         <p>@item.TaiKhoan</p>
+                    }
+                }
+

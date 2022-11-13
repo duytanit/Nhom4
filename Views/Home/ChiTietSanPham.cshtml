@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "ChiTietSanPham";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+<h2>ChiTietSanPham</h2>
+<style type="text/css">
+    #Datmua a {
+        clear: both;
+        background-color: red;
+        color: white;
+        width: 120px;
+        height: 35px;
+        display: block;
+        float: right;
+        text-align: center;
+        padding-top: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14pt;
+    }
+
+        #Datmua a:hover {
+            background-color: gray;
+            color: red;
+        }
+</style>
+<h2>THÔNG TIN CHI TIẾT SÁCH</h2>
+<br />
+<table border="0" style="width:100%">
+    <tr>
+        <td style="width:60%" valign="top">
+            <h1 style="font-weight:bold;color:red">Tên sách: @Model.TenSP</h1> <br />
+            <p style="text-align:justify">
+                <span style="font-size:18pt">
+                    <b>Mô tả:</b>@Model.MoTa
+                </span>
+            </p> <br />
+            <p style="font-size:18pt">
+                <b>Giá bán: <span style="color:red">@Model.Giaban VNĐ </span>
+            </p>
+        </td>
+        <td style="width:40%">
+            <img src="~/Content/HinhAnhSP/@Model.HinhAnh" width="300" />
+        </td>
+    </tr>
+</table>
+<br />
+<div id="Datmua">
+    <a href="@Url.Action("ThemGiohang", "GioHang", new {id=@Model.Masach})">
+        ĐẶT MUA
+    </a>
+</div>
+

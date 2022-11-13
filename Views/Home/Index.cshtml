@@ -1,0 +1,41 @@
+﻿
+@using WebBanHang.Models;
+@model IEnumerable<SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+@{
+    IEnumerable<SanPham> lstDTM = (IEnumerable<SanPham>)ViewBag.ListDTM;
+    IEnumerable<SanPham> lstLTM = ViewBag.ListLTM as IEnumerable<SanPham>;
+    IEnumerable<SanPham> lstMTB = ViewBag.ListMTB as IEnumerable<SanPham>;
+
+}
+@*Buoc dau tach code va long partialView *@
+@*b2 gandl tu controler thong qua  Viewbag vao partial view*@
+<div class="content-top">
+    <h1>Điện Thoại mới nhất</h1>
+    <div class="grid-in">
+        <div class="container">
+            @Html.Partial("~/Views/SanPham/SanPhamStyle1Partial.cshtml", lstDTM)
+        </div>
+
+        <h1>LapTop mới nhất</h1>
+        <div class="container">
+            @Html.Partial("~/Views/SanPham/SanPhamStyle1Partial.cshtml", lstLTM)
+        </div>
+        @*  <div class="grid-in">
+                <div class="container">
+                    @Html.Partial("~/Views/SanPham/SanPhamStyle2Partial.cshtml", lstLTM)
+                </div>
+            </div>
+        *@
+        <h1>Máy tính bảng mới nhất </h1>
+        <div class="grid-in">
+            <div class="container">
+                @Html.Partial("~/Views/SanPham/SanPhamStyle1Partial.cshtml", lstMTB)
+            </div>
+        </div>
+    </div>
+</div>
+

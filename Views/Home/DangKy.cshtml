@@ -1,0 +1,54 @@
+﻿@using CaptchaMvc
+@using CaptchaMvc.HtmlHelpers
+@using WebBanHang.Models
+@model ThanhVien
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+<div class="DangKy">
+    <div class=" register">
+        <h1>ĐĂNG KÝ THÀNH VIÊN</h1>
+        @using (Html.BeginForm())
+        {
+            <div class="col-md-6 register-top-grid">
+                <h3>THÔNG TIN CÁ NHÂN</h3>
+                <div>
+                    <span>Họ tên</span>
+                    @Html.TextBox("HoTen")
+                </div>
+                <div>
+                    <span>Địa chỉ</span>
+                    @Html.TextBox("DiaChi")
+                </div>
+                <div>
+                    <span>Email</span>
+                    @Html.TextBox("Email")
+                </div>
+            </div>
+            <div class="col-md-6 register-bottom-grid register-top-grid ">
+                <h3>Thông tin đăng nhập</h3>
+                <div>
+                    <span>Tài khoản</span>
+                    @Html.TextBox("TaiKhoan")
+                </div>
+                <div>
+                    <span>Mật khẩu</span>
+                    @Html.Password("MatKhau")
+                </div>
+                <div>
+                    <span>Xác nhận mật khẩu</span>
+                    @Html.Password("NhapLaiMatKhau")
+                </div>
+                <div>
+                    @Html.MathCaptcha()
+                </div>
+                <input type="submit" value="Đăng ký">
+
+            </div>
+            <div class="clearfix"> </div>
+        }
+    </div>
+</div>
+<h1 style="color:red;">@ViewBag.ThongBao</h1>

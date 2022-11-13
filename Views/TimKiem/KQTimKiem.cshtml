@@ -1,0 +1,34 @@
+﻿@using WebBanHang.Models
+
+@using PagedList.Mvc;
+@model PagedList.IPagedList<SanPham>
+@{
+    ViewBag.Title = "KQTimKiem";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+<div class="col-md-12 product1" style="background-color:white">
+    <div class=" bottom-product">
+        @foreach (var item in Model.OrderBy(n => n.DonGia))
+        {
+            <div class="col-md-4 bottom-cd simpleCart_shelfItem">
+                <div class="product-at ">
+                    <a href="single.html">
+                        <img class="img-responsive" src="@Url.Content("~/Content/HinhAnhSP/" + item.HinhAnh)" alt="" style="width:250px; height:250px; ">
+                        <div class="pro-grid">
+                            <span class="buy-in">Đặt mua</span>
+                        </div>
+                    </a>
+                </div>
+                <p class="tun">@item.TenSP</p>
+                <a href="@Url.Action("ThemGioHang","GioHang", new {@MaSP=item.MaSP, @strURL=Request.Url.ToString() })" class="item_add"><p class="number item_price"><i> </i>@item.DonGia.Value.ToString("#,##")</p></a>
+            </div>
+        }
+        <div class="clearfix"> </div>
+    </div>
+
+</div>
+<div class="dlink">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 :Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("KQTimKiem", new { page = page,@sTuKhoa=ViewBag.TuKhoa}))
+</div>

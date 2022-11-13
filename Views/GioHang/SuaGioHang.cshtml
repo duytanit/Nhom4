@@ -1,0 +1,53 @@
+﻿@using WebBanHang.Models;
+@model ItemGioHang
+@{
+    ViewBag.Title = "SuaGioHang";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+@{
+    List<ItemGioHang> lstGioHang = new List<ItemGioHang>();
+    if (ViewBag.GioHang == null)
+    {
+        lstGioHang = ViewBag.GioHang as List<ItemGioHang>;
+    }
+
+
+}
+@if (ViewBag.GioHang == null)
+{
+    <p>Giỏ hàng chưa có sản phẩm nào</p>
+}
+else
+{
+    <p>Giỏ hàng có sản phẩm nào</p>
+}
+
+<table class="table">
+    <tr>
+        <td>Mã sản phẩm</td>
+        <td>Tên sản phẩm</td>
+        <td>Hình ảnh</td>
+        <td>Số lượng</td>
+        <td>Đơn giá</td>
+        <td>Thành tiền</td>
+        <td></td>
+    </tr>
+    @foreach (var item in lstGioHang)
+    {
+        // sản phẩm có mã SP được chỉnh sửa gửi từ tham số bên trang giỏ hàng
+        if (Model.MaSP == item.MaSP) { 
+
+            <tr>
+                <td>@item.MaSP</td>
+                <td>@item.TenSP</td>
+                <td><img src="@Url.Content("~/Content/HinhAnhSP/" + item.HinhAnh)" /></td>
+                <td>@Html.TextBox("SoLuong", item.SoLuong)</td>
+                <td>@item.DonGia.ToString("#,##") Đồng</td>
+                <td>@item.ThanhTien.ToString("#,##") Đồng</td>
+                <a href="/GioHang/XoaGioHang?MaSP=@item.MaSP">Xóa</a>
+            </tr>
+        }
+    }
+    }
+</table>

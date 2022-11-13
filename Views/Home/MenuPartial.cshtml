@@ -1,0 +1,37 @@
+﻿@using WebBanHang.Models
+@model IEnumerable<SanPham>
+<div class=" h_menu4">
+    <ul class="memenu skyblue">
+        <li class="showhide" style="display: none;"><span class="title">MENUUUU</span><span class="icon1"></span><span class="icon2"></span></li>
+        <li class="active grid" style="display: inline;"><a class="color8" href="@Url.Action("Index","Home")">Trang chủ </a></li>
+        @foreach (var GroupItem in Model.GroupBy(n => n.LoaiSanPham))
+        {
+            if (GroupItem.Key != null)
+            {
+                <li style="display: inline;">
+                    <a class="color1" href="#">@GroupItem.Key.TenLoai</a>
+                    <div class="mepanel">
+                        <div class="row">
+                            <div class="col1">
+                                <div class="h_nav">
+                                    <ul>
+                                        @foreach (var item in GroupItem.GroupBy(n => n.NhaSanXuat))
+                                        {
+                                            if (item != null)
+                                            {
+                                                <li><a href="@Url.Action("SanPham","SanPham",new {@MaLoaiSP=GroupItem.Key.MaLoaiSP,@MaNSX = item.Key.MaNSX })">@item.Key.TenNSX</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            }
+        }
+        <li style="display: inline;"><a class="color4" href="blog.html">Giới thiệu</a></li>
+        <li style="display: inline;"><a class="color6" href="contact.html">Liên hệ</a></li>
+    </ul>
+</div>
+

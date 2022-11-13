@@ -1,0 +1,64 @@
+﻿@using WebBanHang.Models
+
+@model List<ItemGioHang>
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+@if (Model == null || Model.Count == 0)
+{
+    <samp class="btn btn-danger">Giỏ hàng rỗng </samp>
+    <samp class="btn btn-success"> @Html.ActionLink("Mua hàng", "Index", "Home")</samp>
+
+}
+else
+{
+    <table class="table">
+        <tr>
+
+            <td>Tên sản phẩm</td>
+            <td>Hình ảnh</td>
+            <td>Số lượng</td>
+            <td>Đơn giá</td>
+            <td>Thành tiền</td>
+            <td>Thao tác</td>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.TenSP</td>
+                <td><img style="width: 100px; height: 50px" src="@Url.Content("~/Content/HinhAnhSP/" +item.HinhAnh)" /></td>
+                @using (Html.BeginForm("CapNhapGioHang", "GioHang", new { @iMaSP = item.MaSP }))
+                {
+                    <td>
+                        <input type="number" min="1" name="txtSoluong" value="@item.SoLuong" style="background-color:white" />
+                    </td>
+                    <td>@item.DonGia.ToString("#,##") Đồng</td>
+                    <td>@item.ThanhTien.ToString("#,##") Đồng</td>
+                    <td>
+
+                        <input type="submit" value="Cập nhập" />
+                        <a href="/GioHang/XoaGioHang?MaSP=@item.MaSP" style="color:red"> XOÁ</a>
+                    </td>
+                }
+            </tr>
+            <tr>
+                <td>Tổng số sản phẩm : @ViewBag.TongSoLuong</td>
+                <td>Tổng Tiền :@item.ThanhTien.ToString("#,##") Đồng</td>
+            </tr>
+        }
+    </table>
+    <div class="divDatHang" style=" text-align:right ">
+        @using (Html.BeginForm("DatHang", "GioHang"))
+        {
+            <input type="submit" value="Đặt hàng" class="btn btn-danger" />
+            <div class="btn btn-success"> @Html.ActionLink("Mua tiếp", "Index", "Home")</div>
+
+        }
+    </div>
+}
+
+

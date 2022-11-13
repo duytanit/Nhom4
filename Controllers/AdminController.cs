@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WebBanHang.Models;
+namespace WebBanHang.Controllers
+{
+    public class AdminController : Controller
+    {
+        // GET: Admin
+        QuanLyBanHangEntities db = new QuanLyBanHangEntities();
+        public ActionResult Index()
+        {
+
+            return View(db.SanPhams.Where(n=>n.DaXoa==false));
+        }
+        public ActionResult TaoMoi()
+        {
+            return View();
+        }
+    }
+}

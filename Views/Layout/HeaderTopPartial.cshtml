@@ -1,0 +1,237 @@
+﻿@using WebBanHang.Models
+
+<div class="header-top">
+    <div class="container">
+        <div class="search">
+            @*Tao form tim kiem*@
+
+            @using (Html.BeginForm("LayKQTimKiem", "TimKiem"))
+            {
+           <input type="text" name="sTuKhoa" placeholder="Nhập tên sản phẩm .. " />
+           <input type="submit" value="Tìm kiếm" />
+             }
+
+
+
+
+            </div>
+        <div class="header-left">
+            <ul>
+                @if (Session["TaiKhoan"] != null && Session["TaiKhoan"] != "")
+                {
+                    ThanhVien tv = (ThanhVien)Session["TaiKhoan"];
+                    <li>Chao @tv.HoTen</li>
+                    @Html.ActionLink("Đăng xuất", "DangXuat", "Home")
+                }
+                else
+                {
+                    <li><a href="#" id="btnDangNhap">Đăng nhập</a></li>
+                    <li><a href="@Url.Action("DangKy","Home")">Đăng ký</a></li>
+                }
+
+            </ul>
+            @*chen gio hang tach gio hang sang 1 partial view moi *@
+            @Html.Action("GioHangPartial","GioHang")
+            @*<div class="cart box_1">
+                <a href="checkout.html">
+
+                </a>
+                <p><a href="javascript:;" class="simpleCart_empty">Giỏ hàng</a></p>
+
+            </div>*@
+            <div class="clearfix"> </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+
+
+<div>
+    <div class=" w3l-login-form">
+        @*Tạo 1 div bên ngoài chứa div login-form*@
+        <div id="popup_login">
+            <div class="login-form" id="login-form">
+                <div style="clear:both; text-align:right; margin-bottom:0;">
+                    <samp id="close-form" class="btn btn-danger">X</samp>
+                </div>
+            </div>
+            <h1>Đăng nhập</h1>
+            @using (Ajax.BeginForm("DangNhap","Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "TB" }))
+            {
+
+                <div class=" w3l-form-group">
+
+                    <input type="text" name="txtTenDangNhap" class="TaiKhoan" placeholder="Tên đăng nhập" required="required">
+
+                </div>
+                <div class=" w3l-form-group">
+
+
+                    <input type="password" name="txtMatKhau" class="MatKhau" placeholder="Mật khẩu" required="required">
+                </div>
+
+                <div class="forgot">
+                    <a href="#">Quên mật khẩu</a>
+                    <p><input type="checkbox">Lưu mật khẩu</p>
+                </div>
+                <button type="submit" id="btnDangNhap1">Đăng nhập</button>
+                <h3 style="font-weight:bold;color:red; text-align:left;"id="TB"></h3>
+            }
+            <p class=" w3l-register-p">Bạn chưa có tài khoản<a href="@Url.Action("DangKy","Home")" class="register">Đăng ký ngay </a></p>
+        </div>
+    </div>
+</div>
+<style>
+
+    #popup_login {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99;
+        display: none;
+        background: #d2d2d2;
+    }
+
+    h1 {
+        margin: 0;
+        color: #ffffff;
+        text-align: center;
+        font-size: 50px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        padding: 50px 0;
+    }
+
+    h2 {
+        margin: 0;
+        color: #fc3955;
+        font-size: 25px;
+        font-weight: 400;
+        text-align: center;
+        letter-spacing: 1px;
+        padding-bottom: 30px;
+    }
+
+    p.w3l-register-p {
+        color: #eee;
+        font-size: 13px;
+        text-align: center;
+        margin-top: 2em;
+    }
+
+    .w3l-login-form {
+        max-width: 500px;
+        max-height: 650px;
+        margin: 0 auto;
+        padding: 3em;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+
+    .group {
+        display: flex;
+        padding: 15px 5px;
+        background-color: #ffffff;
+    }
+
+        .group i {
+            color: #fc3955;
+            font-size: 20px;
+            padding: 0 10px;
+        }
+
+    .w3l-form-group {
+        margin: 20px 0;
+    }
+
+        .w3l-form-group label {
+            display: block;
+            text-transform: uppercase;
+            font-size: 13px;
+            color: #d2d2d2;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        border: none;
+        box-sizing: border-box;
+        background: transparent;
+        color: #000;
+    }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+        }
+
+    button {
+        background: #fc3955;
+        color: #ffffff;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: none;
+        padding: 12px 60px;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 6px;
+    }
+
+        button:hover {
+            background-color: #00BCD4;
+            transition-duration: 5s;
+        }
+
+    .forgot {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+    }
+
+    a {
+        color: #eee;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    .forgot p {
+        color: #ffffff;
+        text-align: center;
+        margin: 0px;
+        font-size: 13px;
+    }
+
+    .register {
+        color: #00BCD4;
+        text-decoration: none;
+    }
+
+    #btnDangNhap {
+    }
+</style>
+<script type="text/javascript">
+    //hiển thị login
+
+    $("#btnDangNhap").click(function () {
+        $("#popup_login").show();
+    });
+    //Ẩn đi login
+    $("#close-form").click(AnForm);
+    //định nghĩa ẩn form
+    function AnForm() {
+        $("#popup_login").hide();
+    }
+    // lay gia tri tu texxt booxx
+    $("#btnDangNhap1").click(function () {
+        var TaiKhoan = $(".TaiKhoan").val();
+        var MatKhau = $(".MatKhau").val();
+       // alert("Tai khoan:" + TaiKhoan + "\n Mat Khau :" + MatKhau);
+
+    });
+</script>

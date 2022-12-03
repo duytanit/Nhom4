@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebBanHang.Models.ChiTietDonDatHang>
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+
+    <div style="margin-bottom:5px;">
+        @Html.ActionLink("Xác nhận đã giao hàng", "CartConfirm", "QuanLyDonHang", new { @class="btn btn-primary"})
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Chi tiết đơn hàng</div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>Ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {                   
+                    <tr>
+                        <td style="width: 30%;">
+                            @{ 
+                                string imgpath = "~/Content/HinhAnhSP/" + item.SanPham.HinhAnh;
+                            }
+                            <img src="@Url.Content(imgpath)" style="width: 100px;">                            
+                        </td>
+                        <td>@item.SanPham.TenSP</td>
+                        <td>@item.SanPham.DonGia</td>
+                        <td>@item.SoLuong</td>
+                        <td>
+                            @Html.ActionLink("Xác nhận đã giao hàng", "CartConfirm", "QuanLyDonHang", new { id = item.MaDDH}, new { @class = "btn btn-primary" })
+                        </td>
+                    </tr>
+                }
+            </table>           
+
+        </div>
+    </div>
+</div>
+

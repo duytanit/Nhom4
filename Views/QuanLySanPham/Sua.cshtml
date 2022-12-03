@@ -1,0 +1,171 @@
+﻿@model WebBanHang.Models.SanPham
+@{
+    ViewBag.Title = "Sua";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Edit Product</div>
+        <div class="panel-body">
+            @using (Html.BeginForm("Sua", "QuanLySanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(model => model.MaSP)
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Tên sản phẩm</div>
+                    <div class="col-md-10">
+                        <input type="text" name="TenSP" class="form-control" value="@Model.DonGia" />
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Loại sản phẩm</div>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaLoaiSP", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Nhà cung cấp</div>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaNCC", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Nhà sản xuất</div>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaNSX", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Đơn giá</div>
+                    <div class="col-md-10">
+                        <input type="text" name="DonGia" class="form-control" value="@Model.DonGia" />
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Ngày cập nhật</div>
+                    <div class="col-md-10">
+                        <input type="datetime" name="NgayCapNhap" class="form-control" value="@Model.NgayCapNhap" />
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Cấu hình</div>
+                    <div class="col-md-10">
+                        <input type="text" name="CauHinh" class="form-control" value="@Model.CauHinh" />
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Mô tả</div>
+                    <div class="col-md-10">
+                        <textarea name="MoTa" class="form-control" style="height:150px;">@Model.MoTa</textarea>
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Hình ảnh</div>
+                    <div class="col-md-10">
+                        @{
+                            string imgpath = "~/Content/HinhAnhSP/" + Model.HinhAnh;
+                        }
+                        <img id="output" class="img-rounded" alt="Ảnh" width="180" height="200" src="@Url.Content(imgpath)" />
+                        <p><label for="ifile" style="cursor:pointer; border:1px solid #d0cdcd; padding: 5px; margin-left:40px;">Chọn file ảnh</label></p>
+                        <input type="file" name="HinhAnh" id="ifile" class="form-control" style="display:none;" onchange="loadFile(event)" />
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Số lượng tồn</div>
+                    <div class="col-md-10">
+                        <input type="text" name="SoLuongTon" class="form-control" value="@Model.SoLuongTon" />
+
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Lượt xem</div>
+                    <div class="col-md-10">
+                        <input type="text" name="LuotXem" class="form-control" value="@Model.LuotXem" />
+
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Lượt bình chọn</div>
+                    <div class="col-md-10">
+                        <input type="text" name="LuotBinhChon" class="form-control" value="@Model.LuotBinhChon" />
+
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Lượt bình luận</div>
+                    <div class="col-md-10">
+                        <input type="text" name="LuotBinhLuan" class="form-control" value="@Model.LuotBinhLuan" />
+
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Số lần mua</div>
+                    <div class="col-md-10">
+                        <input type="text" name="SoLanMua" class="form-control" value="@Model.SoLanMua" />
+
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Moi</div>
+                    <div class="col-md-10">
+                        <input type="text" name="Moi" class="form-control" value="@Model.Moi" />
+
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Đã xóa</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DaXoa)
+                    </div>
+                </div>
+                <!--end row-->
+                <div class="row" style="margin-top:20px;">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">         
+                @Html.ActionLink("Close", "Index", "QuanLySanPham", new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

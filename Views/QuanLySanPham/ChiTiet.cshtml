@@ -1,0 +1,148 @@
+﻿@model WebBanHang.Models.SanPham
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Product Detais</div>
+        <div class="panel-body">
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Mã sản phẩm</div>
+                <div class="col-md-10">
+                    @Model.MaSP
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Tên sản phẩm</div>
+                <div class="col-md-10">
+                    @Model.TenSP
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Loại sản phẩm</div>
+                <div class="col-md-10">
+                    @Model.LoaiSanPham.TenLoai
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Nhà cung cấp</div>
+                <div class="col-md-10">
+                    @Model.NhaCungCap.TenNCC
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Nhà sản xuất</div>
+                <div class="col-md-10">
+                    @Model.NhaSanXuat.TenNSX
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Đơn giá</div>
+                <div class="col-md-10">
+                    @String.Format("{0:0,0 VNĐ}", @Model.DonGia)
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Ngày cập nhật</div>
+                <div class="col-md-10">
+                    @Model.NgayCapNhap
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Cấu hình</div>
+                <div class="col-md-10">
+                    @Model.CauHinh
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Mô tả</div>
+                <div class="col-md-10">
+                    @Model.MoTa
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Hình ảnh</div>
+                <div class="col-md-10">
+                    @{
+                        string ImagePath = "~/Content/HinhAnhSP/" + Model.HinhAnh;
+                    }
+                    <img src="@Url.Content(ImagePath)" alt="" width="200" height="150" />
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Số lượng tồn</div>
+                <div class="col-md-10">
+                    @Model.SoLuongTon
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Lượt xem</div>
+                <div class="col-md-10">
+                    @Model.LuotXem
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Lượt bình chọn</div>
+                <div class="col-md-10">
+                    @Model.LuotBinhChon
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Lượt bình luận</div>
+                <div class="col-md-10">
+                    @Model.LuotBinhLuan
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Số lần mua</div>
+                <div class="col-md-10">
+                    @Model.SoLanMua
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Moi</div>
+                <div class="col-md-10">
+                    @Model.Moi
+                </div>
+            </div>
+            <!--end row-->
+
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            @Html.ActionLink("Close", "Index", "QuanLySanPham", new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>

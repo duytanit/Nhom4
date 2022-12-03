@@ -5,4 +5,26 @@
 }
 
 <h2>Trang chủ </h2>
-
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Báo cáo doanh thu</h1>
+    <div class="cart mb-4">
+        @using(Html.BeginForm("Dtreport", "Admin", FormMethod.Post))
+            {
+                <div class="cart-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Từ ngày</th>
+                            <td><input class="form-control" id="fromdate" name="fromdate" type="datetime" value="" required /></td>
+                        </tr>
+                        <tr>
+                            <th>Đến ngày</th>
+                            <td><input class="form-control" id="todate" name="todate" type="datetime" value="" required /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align:center ;"><button type="submit" class="btn btn-primary btn-block" name="submit">Submit</button></td>
+                        </tr>
+                    </table>
+                </div>
+            }
+    </div>
+</div>

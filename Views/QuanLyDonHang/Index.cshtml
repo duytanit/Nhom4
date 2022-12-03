@@ -1,0 +1,53 @@
+﻿@using WebBanHang.Models
+@model PagedList.IPagedList<DonDatHang>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">List order</div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>STT</th>
+                    <th>Tên khách hàng</th>
+                    <th>Email</th>
+                    <th>Điện thoại</th>
+                    <th>Địa chỉ</th>
+                    <th>Ngày đặt</th>
+                    <th>Trạng thái</th>
+                    <th style="width:100px;"></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MaDDH</td>
+                        <td>@item.KhachHang.TenKH</td>
+                        <td>@item.KhachHang.Email</td>
+                        <td>@item.KhachHang.SoDienThoai</td>
+                        <td>@item.KhachHang.DiaChi</td>
+                        <td>@item.NgayDat</td>
+                        @{
+                            if (item.TinhTrangGiaoHang == true)
+                            {
+                                <td>Đã giao hàng</td>
+                            }
+                            else
+                            {
+                                <td>Chưa giao hàng</td>
+                            }
+                        }
+                        <td>@Html.ActionLink("Chi tiết", "ChiTiet", new { id = item.MaDDH })</td>
+                    </tr>
+                }
+            </table>
+            <br />
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+</div>
+

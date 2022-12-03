@@ -1,0 +1,47 @@
+﻿@model WebBanHang.Models.ChiTietDonDatHang
+@{
+    ViewBag.Title = "dtreport";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    string imgpath = "~/Content/HinhAnhSP/" + Model.SanPham.HinhAnh;
+}
+
+<div class="col-md-12">
+    <div class="panel panel-primary">       
+        <div class="panel-heading"><h4>Báo cáo doanh thu từ ngày @ViewBag.fdate đến ngày @ViewBag.tdate </h4></div>
+        <div class="table-responsive">
+            <table class="table table-cart">
+                <thead>
+                    <tr>
+                        <th class="image">Ảnh sản phẩm</th>
+                        <th class="name">Tên sản phẩm</th>
+                        <th class="price">Giá bán lẻ</th>
+                        <th class="quantity">Tổng số lượng bán</th>
+                        <th class="price">Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>                  
+                    <tr>
+                        <td><img src="@Url.Content(imgpath)" class="img-responsive" /></td>
+                        <td>@Model.SanPham.TenSP</td>
+                        <td>@Model.SanPham.DonGia</td>
+                        <td>@Model.SoLuong</td>
+                        <td>
+                            @{ 
+                                decimal? dg = Model.SanPham.DonGia;
+                                int? sl = Model.SoLuong;                               
+                            }
+                        </td>
+                    </tr>
+                    <?php }?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4" style="text-align:center ;"><h4><b>Tổng doanh thu:</b></h4></th>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+

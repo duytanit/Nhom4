@@ -1,0 +1,54 @@
+﻿@using WebBanHang.Models
+@model PagedList.IPagedList<SanPham>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<style type="text/css">
+    th {
+        text-align: center
+    }
+</style>
+<h2 style="margin-top: 20px">THÙNG RÁC</h2>
+<br />
+<br />
+<br />
+<table style="width: 100%" class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>STT</th>
+            <th style="width: 180px">Tên SP</th>
+            <th style="width: 100px">Đơn giá</th>
+            <th>Ngày cập nhật</th>
+            <th>Hình ảnh</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaSP</td>
+                <td>@item.TenSP</td>
+                <td>@String.Format("{0:0,0 VNĐ}", @item.DonGia)</td>
+                <td>@item.NgayCapNhap</td>
+                <td>
+                    @{
+                        string ImagePath = "~/Content/HinhAnhSP/" + item.HinhAnh;
+                    }
+                    <img src="@Url.Content(ImagePath)" alt="" width="250" height="180" />
+                </td>
+                <td>
+                    @Html.ActionLink("Khôi phục", "KhoiPhuc", new { id = item.MaSP }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Xóa", "Xoa", new { id = item.MaSP }, new { @class = "btn btn-default" })
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

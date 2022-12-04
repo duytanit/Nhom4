@@ -101,7 +101,7 @@
                 <div class="row" style="margin-top:5px;">
                     <div class="col-md-2">Lượt xem</div>
                     <div class="col-md-10">
-                        <input type="text" name="LuotXem" class="form-control" value="@Model.LuotXem" />
+                        <input type="text" name="LuotXem" class="form-control" value="@Model.LuotXem" disabled/>
 
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                 <div class="row" style="margin-top:5px;">
                     <div class="col-md-2">Lượt bình chọn</div>
                     <div class="col-md-10">
-                        <input type="text" name="LuotBinhChon" class="form-control" value="@Model.LuotBinhChon" />
+                        <input type="text" name="LuotBinhChon" class="form-control" value="@Model.LuotBinhChon" disabled/>
 
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                 <div class="row" style="margin-top:5px;">
                     <div class="col-md-2">Lượt bình luận</div>
                     <div class="col-md-10">
-                        <input type="text" name="LuotBinhLuan" class="form-control" value="@Model.LuotBinhLuan" />
+                        <input type="text" name="LuotBinhLuan" class="form-control" value="@Model.LuotBinhLuan" disabled/>
 
                     </div>
                 </div>
@@ -143,12 +143,12 @@
                 </div>
                 <!--end row-->
                 <!--row-->
-                <div class="row" style="margin-top:5px;">
+                @*<div class="row" style="margin-top:5px;">
                     <div class="col-md-2">Đã xóa</div>
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.DaXoa)
                     </div>
-                </div>
+                </div>*@
                 <!--end row-->
                 <div class="row" style="margin-top:20px;">
                     <div class="col-md-offset-2 col-md-10">

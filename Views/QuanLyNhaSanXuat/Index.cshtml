@@ -1,0 +1,62 @@
+﻿@using WebBanHang.Models
+@model PagedList.IPagedList<NhaSanXuat>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<style type="text/css">
+    th {
+        text-align: center
+    }
+</style>
+<h2>DANH SÁCH NHÀ SẢN XUẤT</h2>
+<hr />
+@Html.ActionLink("Thêm mới", "Them", "QuanLyNhaSanXuat", new { @class = "btn btn-default" })
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    <p alight="center">
+        Tìm kiếm: @Html.TextBox("tim")
+        <input type="submit" value="Tìm" />
+    </p>
+}
+<br />
+<table style="width: 100%" class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>STT</th>
+            <th style="width: 180px">Tên Nhà Sản Xuất</th>
+            <th style="width: 100px">Thông Tin</th>
+            <th>Logo</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaNSX</td>
+                <td>@item.TenNSX</td>
+                <td>@item.ThongTin</td>
+                <td>
+                    @{
+                        string ImagePath = "~/Content/HinhAnhSP/" + item.Logo;
+                    }
+                    <img src="@Url.Content(ImagePath)" alt="" width="250" height="180" />
+                </td>
+                <td>
+                    @Html.ActionLink("Chi tiết", "ChiTiet", new { id = item.MaNSX }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Sửa", "Sua", new { id = item.MaNSX }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("XOÁ", "Xoa", new { id = item.MaNSX }, new { @class = "btn btn-default" })
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

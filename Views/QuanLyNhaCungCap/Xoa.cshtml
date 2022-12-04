@@ -1,0 +1,80 @@
+﻿@model WebBanHang.Models.NhaCungCap
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">XOÁ DỮ LIỆU</div>
+        <div class="panel-body">
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Mã Nhà Cung Cấp</div>
+                <div class="col-md-10">
+                    @Model.MaNCC
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Tên Nhà Cung Cấp</div>
+                <div class="col-md-10">
+                    @Model.TenNCC
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Địa Chỉ</div>
+                <div class="col-md-10">
+                    @Model.DiaChi
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Email</div>
+                <div class="col-md-10">
+                    @Model.Email
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Số Điện Thoại</div>
+                <div class="col-md-10">
+                    @Model.SoDienThoai
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Số Fax</div>
+                <div class="col-md-10">
+                    @Model.Fax
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+        </div>
+        @using (Html.BeginForm())
+        {
+            <div class="row" style="margin-top:20px;">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Delete" class="btn btn-default" onclick="return window.confirm('Bạn có chắc chắn muốn xóa vĩnh viễn?');" />
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                @Html.ActionLink("Close", "Index", "QuanLyNhaCungCap", new { @class = "btn btn-default" })
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+

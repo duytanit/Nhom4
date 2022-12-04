@@ -7,13 +7,9 @@
 
             @using (Html.BeginForm("LayKQTimKiem", "TimKiem"))
             {
-           <input type="text" name="sTuKhoa" placeholder="Nhập tên sản phẩm .. " />
-           <input type="submit" value="Tìm kiếm" />
+               <input type="text" name="sTuKhoa" placeholder="Nhập tên sản phẩm .. " />
+               <input type="submit" value="Tìm kiếm" />
              }
-
-
-
-
             </div>
         <div class="header-left">
             <ul>
@@ -47,24 +43,23 @@
 
 
 <div>
-    <div class=" w3l-login-form">
-        @*Tạo 1 div bên ngoài chứa div login-form*@
-        <div id="popup_login">
-            <div class="login-form" id="login-form">
-                <div style="clear:both; text-align:right; margin-bottom:0;">
-                    <samp id="close-form" class="btn btn-danger">X</samp>
-                </div>
+    @*Tạo 1 div bên ngoài chứa div login-form*@
+    <div id="popup_login">
+        <div class="login-form" id="login-form">
+            <div style="clear:both; text-align:right; margin-bottom:0;">
+                <samp id="close-form" class="btn btn-danger">X</samp>
             </div>
+        </div>
+        <div class="wrapper_login">
             <h1>Đăng nhập</h1>
-            @using (Ajax.BeginForm("DangNhap","Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "TB" }))
+            @using (Ajax.BeginForm("DangNhap", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "TB" }))
             {
-
-                <div class=" w3l-form-group">
+                <div class="w3l-form">
 
                     <input type="text" name="txtTenDangNhap" class="TaiKhoan" placeholder="Tên đăng nhập" required="required">
 
                 </div>
-                <div class=" w3l-form-group">
+                <div class="w3l-form">
 
 
                     <input type="password" name="txtMatKhau" class="MatKhau" placeholder="Mật khẩu" required="required">
@@ -74,14 +69,19 @@
                     <a href="#">Quên mật khẩu</a>
                     <p><input type="checkbox">Lưu mật khẩu</p>
                 </div>
-                <button type="submit" id="btnDangNhap1">Đăng nhập</button>
-                <h3 style="font-weight:bold;color:red; text-align:left;"id="TB"></h3>
+                <button class="btn-dangnhap"type="submit" id="btnDangNhap1">Đăng nhập</button>
+                <h3 style="font-weight:bold;color:red; text-align:left;" id="TB"></h3>
             }
             <p class=" w3l-register-p">Bạn chưa có tài khoản<a href="@Url.Action("DangKy","Home")" class="register">Đăng ký ngay </a></p>
-        </div>
+        </div>   
     </div>
 </div>
 <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
 
     #popup_login {
         position: fixed;
@@ -91,12 +91,20 @@
         height: 100%;
         z-index: 99;
         display: none;
-        background: #d2d2d2;
+        background: #ffffff;
     }
-
+    .wrapper_login {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 400px;
+        min-width: 30%;
+        margin: 20px auto;
+    }
     h1 {
         margin: 0;
-        color: #ffffff;
+        color: #000;
         text-align: center;
         font-size: 50px;
         font-weight: 500;
@@ -114,66 +122,35 @@
         padding-bottom: 30px;
     }
 
-    p.w3l-register-p {
-        color: #eee;
-        font-size: 13px;
-        text-align: center;
-        margin-top: 2em;
+    form{
+        width: 100%;
     }
-
-    .w3l-login-form {
-        max-width: 500px;
-        max-height: 650px;
-        margin: 0 auto;
-        padding: 3em;
-        border-radius: 10px;
-        box-sizing: border-box;
+    form .w3l-form {
+        width: 100%;
     }
-
-    .group {
-        display: flex;
-        padding: 15px 5px;
-        background-color: #ffffff;
-    }
-
-        .group i {
-            color: #fc3955;
-            font-size: 20px;
-            padding: 0 10px;
-        }
-
-    .w3l-form-group {
-        margin: 20px 0;
-    }
-
-        .w3l-form-group label {
-            display: block;
-            text-transform: uppercase;
-            font-size: 13px;
-            color: #d2d2d2;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            font-style: italic;
-        }
 
     input[type="text"],
     input[type="password"] {
+        margin-top: 12px;
+        border-radius:4px;
+        padding: 12px 12px;
+        font-size: 17px;
         width: 100%;
-        border: none;
-        box-sizing: border-box;
+        border: 0.25px solid #fc3955;
         background: transparent;
         color: #000;
     }
 
-        input[type="text"]:focus,
-        input[type="password"]:focus {
-            outline: none;
-        }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        outline: none;
+        border: 0.25px solid #00BCD4;
+    }
 
-    button {
+    .btn-dangnhap {
         background: #fc3955;
         color: #ffffff;
-        font-size: 13px;
+        font-size: 14px;
         text-transform: uppercase;
         letter-spacing: 1px;
         border: none;
@@ -183,40 +160,43 @@
         border-radius: 6px;
     }
 
-        button:hover {
-            background-color: #00BCD4;
-            transition-duration: 5s;
-        }
+    .btn-dangnhap:hover {
+        background-color: #00BCD4;
+        transition-duration: 0.25s;
+    }
 
     .forgot {
         display: flex;
         justify-content: space-between;
+        font-size:14px;
         margin: 20px 0;
     }
 
     a {
-        color: #eee;
-        font-size: 14px;
+        color: #000;
         text-decoration: none;
     }
 
     .forgot p {
-        color: #ffffff;
+        color: #000;
         text-align: center;
         margin: 0px;
-        font-size: 13px;
     }
 
     .register {
         color: #00BCD4;
         text-decoration: none;
     }
-
-    #btnDangNhap {
+    p.w3l-register-p {
+        color: #000;
+        font-size: 14px;
+        text-align: center;
+        margin-top: 2em;
     }
 </style>
 <script type="text/javascript">
     //hiển thị login
+    console.log($("#loginform"));
 
     $("#btnDangNhap").click(function () {
         $("#popup_login").show();

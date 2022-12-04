@@ -1,8 +1,326 @@
-﻿
+﻿@using WebBanHang.Models;
 @{
     ViewBag.Title = "single";
-    Layout = "~/Views/Layout/_LayoutChiTietSP.cshtml";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
 }
+@{
+    List<LoaiSanPham> lstLSP = ViewBag.listLSP;
+    IEnumerable<NhaSanXuat> lstNSX = ViewBag.listNSX;
+    SanPham sp = ViewBag.sanpham;
+    IEnumerable<SanPham> lstSP = ViewBag.listSP;
+    IEnumerable<BinhLuan> cmt = ViewBag.comment;
+}
+<div class="product">
+    <div class="container">
+        <div class="col-md-3 product-price">
 
-<h2>single</h2>
+            <div class=" rsidebar span_1_of_left">
+                <div class="of-left">
+                    <h3 class="cate">Categories</h3>
+                </div>
+                <ul class="menu">
+                    @Html.Partial("~/Views/SanPham/CategoriesPartial.cshtml", lstLSP)
+                </ul>
+            </div>
+            <!--initiate accordion-->
+            <script type="text/javascript">
+                $(function () {
+                    var menu_ul = $('.menu > li > ul'),
+                        menu_a = $('.menu > li > a');
+                    menu_ul.hide();
+                    menu_a.click(function (e) {
+                        e.preventDefault();
+                        if (!$(this).hasClass('active')) {
+                            menu_a.removeClass('active');
+                            menu_ul.filter(':visible').slideUp('normal');
+                            $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                        } else {
+                            $(this).removeClass('active');
+                            $(this).next().stop(true, true).slideUp('normal');
+                        }
+                    });
 
+                });
+            </script>
+            <!---->
+            <div class="product-middle">
+
+                <div class="fit-top">
+                    <h6 class="shop-top">Lorem Ipsum</h6>
+                    <a href="#" class="shop-now">MUA NGAY</a>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="sellers">
+                <div class="of-left-in">
+                    <h3 class="tag">Tags</h3>
+                </div>
+                <div class="tags">
+                    <ul>
+                        @foreach (var nsx in lstNSX)
+                        {
+                            <li><a href="#">@nsx.TenNSX</a></li>
+                        }
+                        <div class="clearfix"> </div>
+                    </ul>
+
+                </div>
+
+            </div>
+            <!---->
+            @*<div class="product-bottom">
+                <div class="of-left-in">
+                    <h3 class="best">Best Sellers</h3>
+                </div>
+                <div class="product-go">
+                    <div class=" fashion-grid">
+                        <a href="single.html"><img class="img-responsive " src="~/Content/images/p1.jpg" alt=""></a>
+
+                    </div>
+                    <div class=" fashion-grid1">
+                        <h6 class="best2">
+                            <a href="single.html">
+                                Lorem ipsum dolor sit
+                                amet consectetuer
+                            </a>
+                        </h6>
+
+                        <span class=" price-in1"> $40.00</span>
+                    </div>
+
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="product-go">
+                    <div class=" fashion-grid">
+                        <a href="single.html"><img class="img-responsive " src="~/Content/images/p2.jpg" alt=""></a>
+
+                    </div>
+                    <div class="fashion-grid1">
+                        <h6 class="best2">
+                            <a href="single.html">
+                                Lorem ipsum dolor sit
+                                amet consectetuer
+                            </a>
+                        </h6>
+
+                        <span class=" price-in1"> $40.00</span>
+                    </div>
+
+                    <div class="clearfix"> </div>
+                </div>
+
+            </div>
+            <div class=" per1">
+                <a href="single.html">
+                    <img class="img-responsive" src="~/Content/images/pro.jpg" alt="">
+                    <div class="six1">
+                        <h4>DISCOUNT</h4>
+                        <p>Up to</p>
+                        <span>60%</span>
+                    </div>
+                </a>
+            </div>*@
+            <!--Best seller-->
+        </div>
+        <div class="col-md-9 product-price1">
+            <div class="col-md-5 single-top">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li data-thumb="../Content/HinhAnhSP/@sp.HinhAnh">
+                            <img src="@Url.Content("~/Content/HinhAnhSP/" + sp.HinhAnh)" />
+                        </li>
+                        <li data-thumb="../Content/HinhAnhSP/@sp.HinhAnh">
+                            <img src="@Url.Content("~/Content/HinhAnhSP/" + sp.HinhAnh)" />
+                        </li>
+                        <li data-thumb="../Content/HinhAnhSP/@sp.HinhAnh">
+                            <img src="@Url.Content("~/Content/HinhAnhSP/" + sp.HinhAnh)" />
+                        </li>
+                        <li data-thumb="../Content/HinhAnhSP/@sp.HinhAnh">
+                            <img src="@Url.Content("~/Content/HinhAnhSP/" + sp.HinhAnh)" />
+                        </li>
+                    </ul>
+                </div>
+                <!-- FlexSlider -->
+                
+                
+
+            </div>
+            <div class="col-md-7 single-top-in simpleCart_shelfItem">
+                <div class="single-para ">
+                    <h4>@sp.TenSP</h4>
+                    <div class="star-on">
+                        <ul class="star-footer">
+                            <li><a href="#"><i> </i></a></li>
+                            <li><a href="#"><i> </i></a></li>
+                            <li><a href="#"><i> </i></a></li>
+                            <li><a href="#"><i> </i></a></li>
+                            <li><a href="#"><i> </i></a></li>
+                        </ul>
+                        <div class="review">
+                            <a href="#"> @sp.LuotBinhChon lượt bình chọn</a>
+
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                    <h5 class="item_price">@String.Format("{0:0,0 VND}", @sp.DonGia)</h5>
+                    <p>
+                        @Html.Raw(sp.MoTa)
+                    </p>
+                    <div class="available">
+                        <ul>
+                            <li>
+                                Col
+                                <select>
+                                    <option>Bạc</option>
+                                    <option>Đen</option>
+                                    <option>Đen nhám</option>
+                                    <option>Đỏ</option>
+                                </select>
+                            </li>
+                            <li class="size-in">
+                                Cap
+                                <select>
+                                    <option>128GB</option>
+                                    <option>256GB</option>
+                                    <option>512GB</option>
+                                    <option>1TB</option>
+                                </select>
+                            </li>
+                            <div class="clearfix"> </div>
+                        </ul>
+                    </div>
+                    <ul class="tag-men">
+                        <li>
+                            <span class="women1">Tên sản phẩm</span>
+                            <span>: @sp.TenSP</span>
+                        </li>
+                        <li>
+                            <span class="women1">Cấu hình</span>
+                            <span>: @sp.CauHinh</span>
+                        </li>
+                    </ul>
+                    <a href="@Url.Action("ThemGioHang","GioHang", new {@MaSP=sp.MaSP, @strURL=Request.Url.ToString() })" class="add-cart item_add">Thêm vào giỏ hàng</a>
+
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+            <!---->
+            <div class="cd-tabs">
+                <nav>
+                    <ul class="cd-tabs-navigation">
+                        <li><a data-content="fashion" href="#0">Mô tả</a></li>
+                        <li><a data-content="cinema" href="#0">Thông tin thêm</a></li>
+                        <li><a data-content="television" href="#0" class="selected ">Nhận xét</a></li>
+
+                    </ul>
+                </nav>
+                <ul class="cd-tabs-content">
+                    <li data-content="fashion">
+                        <div class="facts">
+                            <p>@Html.Raw(sp.MoTa)</p>
+                            <ul>
+                                <li>Research</li>
+                                <li>Design and Development</li>
+                                <li>Porting and Optimization</li>
+                                <li>System integration</li>
+                                <li>Verification, Validation and Testing</li>
+                                <li>Maintenance and Support</li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li data-content="cinema">
+                        <div class="facts1">
+
+                            <div class="color">
+                                <p>Màu</p>
+                                <span>Xanh, Đen, Đỏ, Đen nhám</span>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="color">
+                                <p>Dung lượng</p>
+                                <span>125GB, 256GB, 512GB, 1TB</span>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+
+                    </li>
+                    <li data-content="television" class="selected">
+                        <div id="box-comment">
+                            @foreach(var item in cmt)
+                            {
+                            <div class="comments-top-top">
+                                <div class="top-comment-left">
+                                    <div class="avatar-icon">
+                                        <i class="fa-solid fa-user-tie"></i>
+                                    </div>
+                                </div>
+                                <div class="top-comment-right">
+                                    <h6><a href="#">@item.MaThanhVien</a> - 26/07/2022</h6>
+                                    <ul class="star-footer">
+                                        <li><a href="#"><i> </i></a></li>
+                                        <li><a href="#"><i> </i></a></li>
+                                        <li><a href="#"><i> </i></a></li>
+                                        <li><a href="#"><i> </i></a></li>
+                                        <li><a href="#"><i> </i></a></li>
+                                    </ul>
+                                    <p>@item.NoiDungBL</p>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            }
+                            
+                        </div>
+                        @{
+                            if (Session["TaiKhoan"] == null)
+                            {
+                                <div class="comment-action">
+                                    <h5 style="text-align: center">Bạn cần đăng nhập để có thể sử dụng tính năng này</h5>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="comment-action">
+                                    @using (Ajax.BeginForm("addComment", "SanPham", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "box-comment" }))
+                                    {
+                                        <input type="text" name="textComment" placeholder="Nhập bình luận ..." />
+                                        <input type="text" name="maSP" value="@sp.MaSP" style="display: none" />
+                                        <button type="submit">Gửi</button>
+                                    }
+                                </div>
+                            }
+                        }
+                        <a class="add-re">Thêm bình luận</a>
+
+                    </li>
+                <div class="clearfix"></div>
+                </ul>
+            </div>
+            <div class=" bottom-product">
+                @Html.Partial("~/Views/SanPham/SanPhamStyle3Partial.cshtml", lstSP)
+            </div>
+        </div>
+
+        <div class="clearfix"> </div>
+    </div>
+</div>
+
+<!---->
+<script>
+    var btnAddComment = document.querySelector(".add-re");
+    console.log(btnAddComment);
+    var modalAddComment = document.querySelector(".comment-action");
+    console.log(modalAddComment)
+
+    btnAddComment.addEventListener("click", () => {
+        if (modalAddComment.classList.contains('show')) {
+            modalAddComment.classList.remove('show');
+            btnAddComment.innerHTML = "Thêm bình luận";
+        } else {
+            modalAddComment.classList.add('show');
+            btnAddComment.innerHTML = "Ẩn bình luận";
+        }
+    })
+</script>

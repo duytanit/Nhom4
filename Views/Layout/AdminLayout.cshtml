@@ -1,23 +1,25 @@
 ﻿<html>
 <head>
-    <title>Metro Panel Flat Bootstarp Resposive Website Template| Home :: w3layouts</title>
+    <title>Home Admin</title>
     <link href="~/Content/Admin/css/bootstrap.css" rel="stylesheet" type="text/css">
     <!-- Custom Theme files -->
     <link href="~/Content/Admin/css/style.css" rel="stylesheet" type="text/css" media="all">
     <!-- Custom Theme files -->
     <script async="" src="//www.google-analytics.com/analytics.js"></script>
     <script src="~/Content/Admin/js/jquery.min.js"></script>
+    <script src="~/Content/js/bootstrap.js"></script>
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
     <link rel="stylesheet" href="~/Content/Admin/css/font-awesome.css">
     <!-- Custom Theme files -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="keywords" content="Metro Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design">
+    <meta name="keywords" content="Bán đồ điện tử">
+    <link rel="shortcut icon" href="~/Content/Admin/images/logo1.png" type="image/x-icon" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--webfont-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <script>
-    $(document).ready(function (c) {
+        $(document).ready(function (c) {
             $('.alert-close').on('click', function (c) {
                 $('.calender-left').fadeOut('slow', function (c) {
                     $('.calender-left').remove();
@@ -26,7 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <script>
-    $(document).ready(function (c) {
+        $(document).ready(function (c) {
             $('.alert-close1').on('click', function (c) {
                 $('.calender-right').fadeOut('slow', function (c) {
                     $('.calender-right').remove();
@@ -35,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <script>
-    $(document).ready(function (c) {
+        $(document).ready(function (c) {
             $('.alert-close2').on('click', function (c) {
                 $('.graph').fadeOut('slow', function (c) {
                     $('.graph').remove();
@@ -44,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <script>
-    $(document).ready(function (c) {
+        $(document).ready(function (c) {
             $('.alert-close3').on('click', function (c) {
                 $('.site-report').fadeOut('slow', function (c) {
                     $('.site-report').remove();
@@ -53,7 +55,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <script>
-    $(document).ready(function (c) {
+        $(document).ready(function (c) {
             $('.alert-close4').on('click', function (c) {
                 $('.total-sale').fadeOut('slow', function (c) {
                     $('.total-sale').remove();
@@ -62,7 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <script>
-    $(document).ready(function (c) {
+        $(document).ready(function (c) {
             $('.alert-close5').on('click', function (c) {
                 $('.to-do').fadeOut('slow', function (c) {
                     $('.to-do').remove();
@@ -71,7 +73,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <script>
-    $(document).ready(function (c) {
+        $(document).ready(function (c) {
             $('.alert-close7').on('click', function (c) {
                 $('.user-trends').fadeOut('slow', function (c) {
                     $('.user-trends').remove();
@@ -80,7 +82,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <script>
-    $(document).ready(function (c) {
+        $(document).ready(function (c) {
             $('.alert-close6').on('click', function (c) {
                 $('.world-map').fadeOut('slow', function (c) {
                     $('.world-map').remove();
@@ -134,7 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </script>
 
     @*Chèn font i con vào lay out*@
-<link href="~/Content/CssFont/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/CssFont/css/font-awesome.min.css" rel="stylesheet" />
 
     <!----Calender -------->
     <link rel="stylesheet" href="~/Content/Admin/css/clndr.css" type="text/css">
@@ -163,29 +165,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="total-content">
         <div class="col-md-3 side-bar">
             <div class="logo text-center">
-                <a href="#"><img src="~/Content/Admin/images/logo1.png" width="292" height="250" alt=""></a>
+                <a href="#"><img src="~/Content/Admin/images/logo1.png" width="334" height="250" alt=""></a>
             </div>
             <div class="navigation">
                 <h3>ADMIN</h3>
                 <ul>
-                    <li><a href="#" style="font-size:28px"><i class="fa fa-th-large" aria-hidden="true"></i></a></li>
-                    <li><a href="#">Quản lý sản phẩm</a></li>
+                    <li><a href="#"><i class="fa fa-th-large"></i></a></li>
+                    <li>@Html.ActionLink("Danh mục sản phẩm", "Index", "QuanLySanPham")</li>
                 </ul>
                 <ul>
-                    <li><a href="#"><i class="art"></i></a></li>
-                    <li><a href="#">Articals</a></li>
+                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li>@Html.ActionLink("Danh mục đơn hàng", "Index", "QuanLyDonHang")</li>
                 </ul>
                 <ul>
-                    <li><a href="#"><i class="user"></i></a></li>
-                    <li><a href="#">Users</a></li>
+                    <li><a href="#"><i class="fa fa-recycle"></i></a></li>
+                    <li>@Html.ActionLink("Thùng rác", "RecycleBin", "QuanLySanPham")</li>
+
                 </ul>
                 <ul>
-                    <li><a href="#"><i class="fat"></i></a></li>
-                    <li><a href="#">Favorites</a></li>
+                    <li><a href="#"><i class="fa fa-object-group"></i></a></li>
+                    <li>@Html.ActionLink("Danh Mục loại sản phẩm ", "Index", "QuanLyLoaiSanPham")</li>
                 </ul>
                 <ul>
-                    <li><a href="#"><i class="speed"></i></a></li>
-                    <li><a href="#">Speed</a></li>
+                    <li><a href="#"><i class="fa fa-object-group"></i></a></li>
+                    <li>@Html.ActionLink("Danh Mục Nhà Sản Xuất ", "Index", "QuanLyNhaSanXuat")</li>
+                </ul>
+                <ul>
+                    <li><a href="#"><i class="fa fa-binoculars"></i></a></li>
+                    <li>@Html.ActionLink("Danh Mục Nhà Cung Cấp ", "Index", "QuanLyNhaCungCap")</li>
                 </ul>
                 <ul>
                     <li><a href="#"><i class="setting"></i></a></li>
@@ -433,8 +440,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="clearfix"></div>
             </div>*@
             <div class="clearfix"></div>
-            <p class="home"><a href="#">Home</a> &gt; <strong> Dashboard</strong></p>
-            <div class="list_of_members">
+            <p class="home">@Html.ActionLink("Home","Index","Admin") &gt; <strong> Dashboard</strong></p>
+            @*<div class="list_of_members">
                 <div class="sales">
                     <div class="icon">
                         <i class="dollar"></i>
@@ -476,12 +483,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
-            </div>
-            <div class="total-sales">
+            </div>*@
+            @*<div class="total-sales">
 
 
                 <div class="clearfix"></div>
-            </div>
+            </div>*@
             @RenderBody()
             @*<div class="total-world">
             <div class="world-map">

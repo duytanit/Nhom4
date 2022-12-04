@@ -1,0 +1,70 @@
+﻿@using WebBanHang.Models
+@model PagedList.IPagedList<NhaCungCap>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<style type="text/css">
+    th {
+        text-align: center
+    }
+</style>
+<h2>DANH SÁCH CÁC NHÀ CUNG CẤP</h2>
+<hr />
+@Html.ActionLink("Thêm mới", "Them", "QuanLyNhaCungCap", new { @class = "btn btn-default" })
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    <p alight="center">
+        Tìm kiếm: @Html.TextBox("tim")
+        <input type="submit" value="Tìm" />
+    </p>
+}
+<br />
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <table style="width: 100%" class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>STT</th>
+                        <th style="width: 180px">Tên Nhà Cung Cấp</th>
+                        <th style="width: 100px">Địa Chỉ </th>
+                        <th style="width: 100px">Email </th>
+                        <th style="width: 100px">Số Điện Thoại</th>
+                        <th style="width: 100px">Fax</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>@item.MaNCC </td>
+                            <td>@item.TenNCC</td>
+                            <td>@item.DiaChi</td>
+                            <td>@item.Email</td>
+                            <td>@item.SoDienThoai</td>
+                            <td>
+                                @item.Fax
+                            </td>
+                            <td>
+                                @Html.ActionLink("Chi tiết", "ChiTiet", new { id = item.MaNCC }, new { @class = "btn btn-default" })
+                                @Html.ActionLink("Sửa", "Sua", new { id = item.MaNCC }, new { @class = "btn btn-default" })
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+     </div>
+ </div>
+        <br />
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+

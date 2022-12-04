@@ -1,0 +1,56 @@
+﻿@model WebBanHang.Models.LoaiSanPham
+@{
+    ViewBag.Title = "Sua";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading"> THÔNG TIN CHI TIẾT LOẠI SẢN PHẨM </div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true) //bắt lỗi
+                <table>
+                    <tr style="height:40px">
+                        <td> Tên Nhà Cung Cấp: </td>
+                        <td>
+                            @Html.TextBox("TenLoai")
+                            <font color="red">
+                                @ViewData["loi1"]
+                            </font>
+                        </td>
+                    </tr>
+
+                    <tr style="height:40px">
+                        <td> Dia Chi: </td>
+                        <td>
+                            @Html.TextBox("BiDanh")
+                            <font color="red">
+                                @ViewData["loi2"]
+                            </font>
+                        </td>
+                    </tr>
+
+                    <tr style="height:40px">
+                        <td colspan="2" style="text-align:center">
+                            <input type="submit" value="Save" />
+                        </td>
+                    </tr>
+
+                </table>
+            }
+        </div>
+        <div class="modal-footer">
+            @Html.ActionLink("Close", "Index", "QuanLyLoaiSanPham", new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+

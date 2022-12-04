@@ -1,0 +1,92 @@
+﻿@model WebBanHang.Models.NhaCungCap
+@{
+    ViewBag.Title = "Sua";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading"> THÔNG TIN CHI TIẾT NHÀ CUNG CẤP  </div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true) //bắt lỗi
+            <table>
+                <tr style="height:40px">
+                    <td> Tên Nhà Cung Cấp: </td>
+                    <td>
+                        @Html.TextBox("TenNCC")
+                        <font color="red">
+                            @ViewData["loi1"]
+                        </font>
+                    </td>
+                </tr>
+
+                <tr style="height:40px">
+                    <td> Dia Chi: </td>
+                    <td>
+                        @Html.TextBox("DiaChi")
+                        <font color="red">
+                            @ViewData["loi2"]
+                        </font>
+                    </td>
+                </tr>
+
+                <tr style="height:40px">
+                    <td> Email: </td>
+                    <td>
+                        @Html.TextBox("Email")
+                        <font color="red">
+                            @ViewData["loi3"]
+                        </font>
+                    </td>
+                </tr>
+
+                <tr style="height:40px">
+                    <td> Số Điện Thoại: </td>
+                    <td>
+                        @Html.TextBox("SoDienThoai")
+                        <font color="red">
+                            @ViewData["loi4"]
+                        </font>
+                    </td>
+                </tr>
+
+                <tr style="height:40px">
+                    <td> Fax: </td>
+                    <td>
+                        @Html.TextBox("Fax")
+                        <font color="red">
+                            @ViewData["loi5"]
+                        </font>
+                    </td>
+                </tr>
+                <tr style="height:40px">
+                    <td colspan="2" style="text-align:center">
+                        <input type="submit" value="Save" />
+                    </td>
+                    <td>
+                        @using (Html.BeginForm())
+                        {
+                            <p>
+                                @Html.ActionLink("Xoá", "xoa", new { id = Model.MaNCC }, new { @class = "btn btn-default" })
+                            </p>
+                        }
+                    </td>
+                </tr>
+
+            </table>
+            }
+        </div>
+        <div class="modal-footer">
+            @Html.ActionLink("Close", "Index", "QuanLyNhaCungCap", new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

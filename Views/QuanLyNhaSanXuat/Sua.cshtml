@@ -1,0 +1,62 @@
+﻿@model WebBanHang.Models.NhaSanXuat
+@{
+    ViewBag.Title = "Sua";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Edit Product</div>
+        <div class="panel-body">
+            @using (Html.BeginForm("Sua", "QuanLyNhaSanXuat", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(model => model.MaNSX)
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Tên Nha San Xuat</div>
+                    <div class="col-md-10">
+                        <input type="text" name="TenSP" class="form-control" value="@Model.TenNSX" />
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Thông Tin Nha San Xuat</div>
+                    <div class="col-md-10">
+                        <input type="text" name="TenSP" class="form-control" value="@Model.ThongTin" />
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Hình ảnh</div>
+                    <div class="col-md-10">
+                        @{
+                            string imgpath = "~/Content/HinhAnhSP/" + Model.Logo;
+                        }
+                        <img id="output" class="img-rounded" alt="Ảnh" width="180" height="200" src="@Url.Content(imgpath)" />
+                        <p><label for="ifile" style="cursor:pointer; border:1px solid #d0cdcd; padding: 5px; margin-left:40px;">Chọn file ảnh</label></p>
+                        <input type="file" name="HinhAnh" id="ifile" class="form-control" style="display:none;" onchange="loadFile(event)" />
+                    </div>
+                </div>
+
+                <!--end row-->
+                <div class="row" style="margin-top:20px;">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            @Html.ActionLink("Close", "Index", "QuanLyNhaSanXuat", new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

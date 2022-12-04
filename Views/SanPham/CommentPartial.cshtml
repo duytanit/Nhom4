@@ -1,0 +1,27 @@
+﻿@using WebBanHang.Models;
+@model IEnumerable<BinhLuan>
+
+@foreach (var item in Model)
+{
+    <div class="comments-top-top" id="box-comment">
+        <div class="top-comment-left">
+            <div class="avatar-icon">
+                <i class="fa-solid fa-user-tie"></i>
+            </div>
+        </div>
+        <div class="top-comment-right">
+            <h6><a href="#">@item.MaThanhVien</a> - 26/07/2022</h6>
+            <ul class="star-footer">
+                <li><a href="#"><i> </i></a></li>
+                <li><a href="#"><i> </i></a></li>
+                <li><a href="#"><i> </i></a></li>
+                <li><a href="#"><i> </i></a></li>
+                <li><a href="#"><i> </i></a></li>
+            </ul>
+            <p>@item.NoiDungBL</p>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+}
+
+

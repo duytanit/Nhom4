@@ -1,0 +1,116 @@
+﻿@using WebBanHang.Models
+@model List<ItemGioHang>
+
+@{
+    ThanhVien userLogin = new ThanhVien();
+    if (Session["TaiKhoan"] != null && Session["TaiKhoan"] != "")
+    {
+        userLogin = (ThanhVien)Session["TaiKhoan"];
+    }
+}
+@using (Html.BeginForm("DatHang", "GioHang"))
+{
+<div class="modal-body">
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Tên khách hàng</label>
+            <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Tên khách hàng" value="@userLogin.HoTen">
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Địa chỉ</label>
+            <input type="text" name="address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Địa chỉ" value="@userLogin.DiaChi">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Số điện thoại</label>
+            <input type="text" name="sdt" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Số điện thoại" value="@userLogin.SoDienThoai">
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" value="@userLogin.Email">
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">Đơn giá</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                                            {
+                    <tr>
+                        <th scope="row">@item.MaSP</th>
+                        <td>@item.TenSP</td>
+                        <td><img src="~/Content/HinhAnhSP/@item.HinhAnh" width="60px" height="40px" /></td>
+                        <td>@item.DonGia</td>
+                        <td>@item.SoLuong</td>
+                        <td>@item.ThanhTien</td>
+                    </tr>
+                                            }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-lg-12">
+            <input type="radio" name="httt" value="nhan hang" /> Thanh toán khi nhận hàng
+            <input type="radio" name="httt" id="selectAction" value="ngan hang" style="margin-left:50px;" /> Thanh toán qua ngân hàng
+            <div class="collapse collapse-custom " id="collapseExample" style="margin-top: 1em">
+                <div class="card card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tên ngân hàng</label>
+                        <input type="email" class="form-control" placeholder="Tên ngân hàng">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Mã giao dịch</label>
+                        <input type="email" class="form-control" placeholder="Mã giao dịch">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+    <button type="submit" class="btn btn-primary">Đặt hàng</button>
+</div>
+}
+    
+<script>
+    var collapse = document.getElementById("collapseExample");
+    console.log(collapse)
+    var selectAction = document.getElementById("selectAction");
+    console.log(selectAction)
+    selectAction.addEventListener("click", (event) => {
+        if (collapse.classList.contains("in")) {
+            collapse.classList.remove("in")
+        } else {
+            collapse.classList.add("in")
+        }
+    })
+</script>
+
+
+
+

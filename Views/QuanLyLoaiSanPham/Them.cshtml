@@ -1,0 +1,52 @@
+﻿@model WebBanHang.Models.LoaiSanPham
+
+@{
+    ViewBag.Title = "Them";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Danh Sách Loại Sản Phẩm</div>
+        <div class="panel-body">
+            @using (Html.BeginForm("Them", "QuanLyLoaiSanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">Tên Loai sản phẩm</div>
+                    <div class="col-md-10">
+                        <input type="text" name="tenlsp" class="form-control" required />
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-2">BiDanh</div>
+                    <div class="col-md-10">
+                        <input type="text" name="Bidanh" class="form-control" required />
+                    </div>
+                </div>
+                <!--end row-->
+                <div class="row" style="margin-top:20px;">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            @Html.ActionLink("Close", "Index", "QuanLySanPham", new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+
+
+

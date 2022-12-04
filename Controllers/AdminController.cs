@@ -13,8 +13,8 @@ namespace WebBanHang.Controllers
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
         public ActionResult Index()
         {
-            return View();
-            //return View(db.SanPhams.Where(n=>n.DaXoa==false));
+            //return View();
+            return View(db.SanPhams.Where(n=>n.DaXoa==false));
         }
         public ActionResult Dtreport(FormCollection f)
         {

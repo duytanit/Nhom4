@@ -1,0 +1,65 @@
+﻿@model WebBanHang.Models.LoaiSanPham
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">THÔNG TIN CHI TIẾT LOAI SAN PHAM</div>
+        <div class="panel-body">
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Mã Nhà Loai</div>
+                <div class="col-md-10">
+                    @Model.MaLoaiSP
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Tên Loai</div>
+                <div class="col-md-10">
+                    @Model.TenLoai
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">BiDanh</div>
+                <div class="col-md-10">
+                    @Model.BiDanh
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+        </div>
+        <div class="modal-footer">
+            <table>
+                <tr>
+                    <td align="center" >
+                        @using (Html.BeginForm())
+                        {
+                            <p>
+                                @Html.ActionLink("Xoá", "xoa", new { id = Model.MaLoaiSP }, new { @class = "btn btn-default" })
+                            </p>
+                        }
+                    </td>
+                    <td>
+                        @using (Html.BeginForm())
+                        {
+                            <p>
+                                @Html.ActionLink("sửa", "Sua", new { id = Model.MaLoaiSP }, new { @class = "btn btn-default" })
+                            </p>
+                        }
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            @Html.ActionLink("Close", "Index", "QuanLyNhaCungCap", new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,19 @@
+﻿@using WebBanHang.Models
+@using System.Linq
+@foreach (LoaiSanPham item in Model)
+{
+    <li class="item @item.MaLoaiSP">
+        <a href="#">@item.TenLoai</a>
+        <ul class="cute">
+            @{ 
+                QuanLyBanHangEntities db = new QuanLyBanHangEntities();
+                IEnumerable<SanPham> ListSP = db.SanPhams.Where(s => s.MaLoaiSP == item.MaLoaiSP);
+            }
+            @foreach(SanPham itemSP in ListSP)
+            {
+                <li class="subitem @itemSP.MaSP"><a href="@Url.Action("Single", "SanPham", new { @maSP = itemSP.MaSP, @maLSP = itemSP.MaLoaiSP})">@itemSP.TenSP</a></li>
+            }
+        </ul>
+    </li>
+}
+

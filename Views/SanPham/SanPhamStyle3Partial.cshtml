@@ -1,0 +1,19 @@
+﻿@using WebBanHang.Models
+@model IEnumerable<SanPham>
+
+@foreach (var item in Model.Take(3))
+{
+    <div class="col-md-4 bottom-cd simpleCart_shelfItem">
+        <div class="product-at">
+            <a href="@Url.Action("Single", "SanPham", new { @maSP = item.MaSP, @maLSP = item.MaLoaiSP})">
+                <img class="img-responsive" src="~/Content/HinhAnhSP/@item.HinhAnh" alt="">
+                <div class="pro-grid">
+                    <a href="@Url.Action("ThemGioHang","GioHang", new {@MaSP=item.MaSP, @strURL=Request.Url.ToString() })"><span class="buy-in">Mua ngay</span></a>
+                </div>
+            </a>
+        </div>
+        <p class="tun">@item.TenSP</p>
+        <a href="@Url.Action("ThemGioHang","GioHang", new {@MaSP=item.MaSP, @strURL=Request.Url.ToString() })" class="item_add"><p class="number item_price"><i> </i>@String.Format("{0:0,0 VND}", item.DonGia)</p></a>
+    </div>
+}
+<div class="clearfix"> </div>

@@ -10,6 +10,13 @@ namespace WebBanHang.Controllers
     public class GioHangController : Controller
     {
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
+        
+
+        [ChildActionOnly]
+        public ActionResult CartInfoPartial()
+        {
+            return PartialView();
+        }
         //Lay gio hang tra ve list item gio hang dung list
         public List<ItemGioHang> LayGioHang()
         {
@@ -139,18 +146,41 @@ namespace WebBanHang.Controllers
             return RedirectToAction("XemGioHang");
         }
         //Xây dựng  chức năng đặt hàng 
-        public ActionResult DatHang()
+        [HttpPost]
+        public ActionResult DatHang(string username, string address, string sdt, string email)
         {
             if (Session["GioHang"] == null)
             {
                 return RedirectToAction("Index", "Home");
             }
+            
             //Them don hang
             DonDatHang ddh = new DonDatHang();
             ddh.NgayDat = DateTime.Now;
             ddh.TinhTrangGiaoHang = false;
             ddh.DaThanhToan = false;
             ddh.UuDai = 0;
+            //ddh.MaKH = null;
+            KhachHang tvm = new KhachHang();
+            if (Session["TaiKhoan"] == null)
+            {
+                tvm.TenKH = username;
+                tvm.DiaChi = address;
+                tvm.SoDienThoai = sdt;
+                tvm.Email = email;
+                db.KhachHangs.Add(tvm);
+                db.SaveChanges();
+            }
+            if (Session["TaiKhoan"] == null)
+            {
+                ddh.MaKH = tvm.MaKH;
+            }
+            else
+            {
+                ThanhVien user = (ThanhVien)Session["TaiKhoan"];
+                ddh.MaKH = user.MaThanhVien;
+            }
+
             db.DonDatHangs.Add(ddh);
             db.SaveChanges();
             //Them chi tiet don hang
@@ -169,5 +199,6 @@ namespace WebBanHang.Controllers
             Session["GioHang"] = null;
             return RedirectToAction("XemGioHang");
         }
+        
     }
 }

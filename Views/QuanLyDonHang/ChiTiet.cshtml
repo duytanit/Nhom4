@@ -32,7 +32,7 @@
                         <td>@item.SanPham.TenSP</td>
                         <td>@item.SanPham.DonGia</td>
                         <td>@item.SoLuong</td>
-                        <td>
+                        <td rowspan="@Model.Count()">
                             @Html.ActionLink("Xác nhận đã giao hàng", "CartConfirm", "QuanLyDonHang", new { id = item.MaDDH}, new { @class = "btn btn-primary" })
                         </td>
                     </tr>

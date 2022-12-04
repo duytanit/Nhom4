@@ -1,0 +1,64 @@
+﻿@model WebBanHang.Models.NhaSanXuat
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">XOÁ NHÀ SẢN XUẤT</div>
+        <div class="panel-body">
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Mã Nhà Sản Xuất</div>
+                <div class="col-md-10">
+                    @Model.MaNSX
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Tên Nhà Sản Xuất</div>
+                <div class="col-md-10">
+                    @Model.TenNSX
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Thông Tin Nhà Sản Xuất</div>
+                <div class="col-md-10">
+                    @Model.ThongTin
+                </div>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">LOGO</div>
+                <div class="col-md-10">
+                    @{
+                        string ImagePath = "~/Content/HinhAnhSP/" + Model.Logo;
+                    }
+                    <img src="@Url.Content(ImagePath)" alt="" width="200" height="150" />
+                </div>
+            </div>
+            <!--end row-->
+        </div>
+        @using (Html.BeginForm())
+        {
+            <div class="row" style="margin-top:20px;">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Delete" class="btn btn-default" onclick="return window.confirm('Bạn có chắc chắn muốn xóa vĩnh viễn?');" />
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                @Html.ActionLink("Close", "Index", "QuanLyNhaSanXuat", new { @class = "btn btn-default" })
+            </div>
+        }
+    </div>
+</div>
+
+
+
+

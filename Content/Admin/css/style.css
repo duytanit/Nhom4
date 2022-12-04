@@ -50,7 +50,7 @@ label{
 	width: 76%;
 }
 .total-content {
-	margin:2em 1em;
+	/*margin:2em 1em;*/
 }
 .logo {
     padding:3em 0;
@@ -63,11 +63,11 @@ label{
 	color:#fff;
 	font-size:1.35em;
 	font-weight:600;
-	padding-left:2.5em;
+	padding-left:2em;
 	margin-bottom:1em;
 }
 .navigation ul {
-	padding-left:4em;
+	padding-left:2em;
 	padding-bottom:0.25em;
 	padding-top:0em;
 	cursor: pointer;
@@ -1385,7 +1385,7 @@ button#focus-single,button#focus-multiple,button#focus-coords,button#focus-init 
 }
 @media screen and (max-width: 1280px) {
 	.total-content {
-		margin: 1.5em 1em;
+		/*margin: 1.5em 1em;*/
 	}
 	.world-map {
 		padding: 2em 1em 0 1em;
@@ -1454,7 +1454,7 @@ button#focus-single,button#focus-multiple,button#focus-coords,button#focus-init 
 		padding: 2.5em 0;
 	}
 	.total-content {
-		margin: 2em 1em;
+		/*margin: 2em 1em;*/
 	}
 	button#focus-single, button#focus-multiple, button#focus-coords, button#focus-init {
 		font-size: 0.71em;
@@ -2142,7 +2142,7 @@ button#focus-single,button#focus-multiple,button#focus-coords,button#focus-init 
 }
 @media screen and (max-width: 320px) {
 	.total-content {
-		margin: 0.7em;
+		/*margin: 0.7em;*/
 	}
 	.logo a img {
 		width:45%;

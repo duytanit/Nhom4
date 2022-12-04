@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebBanHang.Models;
-
 using PagedList;
 
 namespace WebBanHang.Controllers
@@ -13,7 +12,9 @@ namespace WebBanHang.Controllers
     public class TimKiemController : Controller
     {
         // GET: TimKiem
+
         QuanLyBanHangEntities db = new QuanLyBanHangEntities();
+
         [HttpGet]
         public ActionResult KQTimKiem(string sTuKhoa,int? page)
         {

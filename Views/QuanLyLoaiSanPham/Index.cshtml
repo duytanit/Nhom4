@@ -1,0 +1,50 @@
+﻿@using WebBanHang.Models
+@model PagedList.IPagedList<LoaiSanPham>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">LOAI SAN PHAM</div>
+        <div class="panel-body">
+            <table class="table table-bordered table-hover">
+                @using (Html.BeginForm())
+                {
+                    <p alight="center">
+                        Tìm kiếm: @Html.TextBox("tim")
+                        <input type="submit" value="Tìm" />
+                    </p>
+                }
+                <br />
+                <tr>
+                    <th>STT</th>
+                    <th>Tên Loai</th>
+                    <th>BiDanh</th>
+                    <th style="width:100px;"></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MaLoaiSP</td>
+                        <td>@item.TenLoai</td>
+                        <td>@item.BiDanh</td>
+                        <td>@Html.ActionLink("Chi tiết", "ChiTiet", new { id = item.MaLoaiSP })</td>
+                    </tr>
+                }
+            </table>
+            <hr />
+            @Html.ActionLink("Thêm mới", "Them", "QuanLyNhaLoaiSanPham", new { @class = "btn btn-default" })
+            <br />
+            <br />
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+</div>
+
+
+

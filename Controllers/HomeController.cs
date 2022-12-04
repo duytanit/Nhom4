@@ -69,18 +69,36 @@ namespace WebBanHang.Controllers
         [HttpPost]
         public ActionResult DangKy(ThanhVien tv)
         {
-            //Kiem tra captcha hop le
-            if (this.IsCaptchaValid("captcha is not vaild "))
-            {
 
-                ViewBag.ThongBao = "Thêm thành công ";
-                //Them thanh vien vao csdl
-                db.ThanhViens.Add(tv);
-                db.SaveChanges();
+            //Kiem tra captcha hop le
+            try
+            {
+                ThanhVien tvc = db.ThanhViens.SingleOrDefault(n => n.TaiKhoan == tv.TaiKhoan);
+                if (tvc != null)
+                {
+                    ViewBag.ThongBao1 = "Tên tài khoản đã tồn tại";
+                    return View();
+                }
+                if (this.IsCaptchaValid("captcha is not vaild"))
+                {
+                    ViewBag.ThongBao3 = "Thêm thành công ";
+                    //Them thanh vien vao csdl
+                    db.ThanhViens.Add(tv);
+                    db.SaveChanges();
+                    return View();
+                }
+                else
+                {
+                    ViewBag.ThongBao2 = "Sai mã captcha ";
+                    return View();
+                }
                 return View();
             }
-            ViewBag.ThongBao = "Sai mã captcha ";
-            return View();
+            catch (Exception ex)
+            {
+                ViewBag.ThongBao3 = "Internal server error "+ ex.Message;
+                return View();
+            }
         }
         [HttpPost]
         public ActionResult DangNhap(FormCollection f)
@@ -92,7 +110,7 @@ namespace WebBanHang.Controllers
             if (tv != null)
             {
                 Session["TaiKhoan"] = tv;
-                return Content("<script>window.location.reload();</script>");
+                return Content("<script>window.location.href='/'</script>");
             }
             return Content("Tai khoan mat khau khong chinh xac");
         }

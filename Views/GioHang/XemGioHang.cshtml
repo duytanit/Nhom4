@@ -46,19 +46,34 @@ else
                 }
             </tr>
             <tr>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td>Tổng số sản phẩm : @ViewBag.TongSoLuong</td>
                 <td>Tổng Tiền :@item.ThanhTien.ToString("#,##") Đồng</td>
+                <td></td>
             </tr>
         }
     </table>
     <div class="divDatHang" style=" text-align:right ">
-        @using (Html.BeginForm("DatHang", "GioHang"))
-        {
-            <input type="submit" value="Đặt hàng" class="btn btn-danger" />
-            <div class="btn btn-success"> @Html.ActionLink("Mua tiếp", "Index", "Home")</div>
-
-        }
+        <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Đặt hàng</button>
+        <div class="btn btn-success"> @Html.ActionLink("Mua tiếp", "Index", "Home")</div>
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" style="text-align: center;">Thông tin thanh toán</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @Html.Partial("~/Views/GioHang/CartInfoPartial.cshtml",Model)
+                    
+                </div>
+            </div>
+        </div>
+
 }
 
 

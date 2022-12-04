@@ -78,7 +78,7 @@ a.item_add {
 }
 /*----*/
 .header {
-  border-bottom: 1px solid #000;
+  border-bottom: 0.125px solid #A6A6A6;
 }
 .header-top{
 	background: #000;
@@ -86,42 +86,58 @@ a.item_add {
 }
 .search{
 	position:relative;
-	  float: left;
-  width: 25%;
-  background-color: #fff;
-    margin-top: 11px;
+	float: left;
+	width: 25%;
+	height: 40px;
+	background-color: #fff;
+	margin-top: 11px;
+}
+.search form{
+	margin: 0;
+	padding: 0;
 }
 .search input[type="text"] {
 	outline: none;
-  padding: 3px 15px;
-  background: none;
-  width: 91%;
-  border: none;
-  font-size: 1.2em;
-  color: #000; 
-   font-weight: 700; 	
+	border: none;
+	box-sizing: border-box;
+	margin: 0;
+	height: 40px;
+	padding-left: 15px;
+	padding-right: 80px;
+	background: none;
+	width: 100%;
+	border: none;
+	font-size: 1.2em;
+	color: #000; 
+	font-weight: 500; 	
 }
 .search input[type="submit"] {	
 	border: none;
 	cursor: pointer;
 	position: absolute;
 	outline: none;
-	 top: 0px;
-  right: 0px;
-  background: #c7c7c7;
-  font-size: 1.2em;
-  color: #000;
-  padding: 3px;
-  font-weight: 700;
+	width: 75px;
+	height: 40px;
+	top: 0;
+	right: 0;
+	background: #c7c7c7;
+	font-size: 1.5rem;
+	color: #000;
+	padding: 3px;
+	font-weight: 600;
+}
+.search input[type="text"]:focus{
+	border: none;
+	outline: none;
 }
 .search input[type="submit"]:hover {
-  background: #EF5F21;  
-  color: #fff;
-    transition: 0.5s all;
-  -webkit-transition: 0.5s all;
-  -o-transition: 0.5s all;
-  -moz-transition: 0.5s all;
-  -ms-transition: 0.5s all;
+	background: #EF5F21;  
+	color: #fff;
+	transition: 0.25s all;
+	-webkit-transition: 0.25s all;
+	-o-transition: 0.25s all;
+	-moz-transition: 0.25s all;
+	-ms-transition: 0.25s all;
 }
 .header-left{
 	float: right;
@@ -188,7 +204,7 @@ a.item_add {
 	background-size: cover;
 	width:100%;
 	min-height: 560px;
-	  position: relative;
+	position: relative;
 }
 /*--- slider-css --*/
 
@@ -276,7 +292,7 @@ height: 35px;
 .banner-text h3 {
   font-size: 3.2em;
   font-weight: 800;
-  font-family: 'Lato', sans-serif;
+  /*font-family: 'Lato', sans-serif;*/
   text-transform: uppercase;
   letter-spacing: 6px;
   line-height: 1.2em;
@@ -914,7 +930,7 @@ h3.best {
 }
 /*----*/
 .product-middle{
-	background: url(../images/product1.jpg) center;
+	background: url(../HinhAnhSP/mtb2.png) center;
   width: 100%;
   min-height: 45px;
   display: block;
@@ -1042,9 +1058,9 @@ a.item_add p.number i{
 p.tun{
 	font-size:1em;
 	  color: #949494;
-  text-align: center;
-  line-height: 1.3em;
-  padding: 1em 0;
+	  text-align: center;
+	  line-height: 1.3em;
+	  padding: 1em 0;
 }
 
 .product-at{
@@ -1093,12 +1109,10 @@ p.tun{
 .single-para h4 {
     color: #000;
   font-size: 3em;
-  font-family: 'Lato', serif;
 }
 .single-para p {
   font-size: 1em;
   color: #2c3e50;
-  font-family: 'Lato', serif;
   line-height: 1.8em;
     margin: 1em 0;
 }
@@ -1114,9 +1128,11 @@ p.tun{
 	padding:0 0.5em 0 0;
 	color:#4c4c4c;
 	font-size:1.1em;
-	float:left;
+	display:flex;
+	align-items: center;
+	justify-content:space-between;
 	width:100%;
-	 font-family: 'Roboto Slab', serif;
+	 /*font-family: 'Roboto Slab', serif;*/
 	   margin: 0.5em 0;
 }
 .available ul li select {
@@ -1124,12 +1140,10 @@ p.tun{
   padding: 12px;
   border: none;
   background: #eeeeee;
- width: 77%;
-  margin-left: 13%;
+  width: 77%;
   cursor:pointer;
 }
 .available ul li.size-in select {
-	  margin-left: 16%;
 }
 .available {
   padding:  1em 0;
@@ -1142,12 +1156,16 @@ ul.tag-men {
 ul.tag-men li{
 	list-style:none;
 	color:#000;
-	 font-family: 'Lato', serif;
+	 /*font-family: 'Lato', serif;*/
 	 margin: 0.3em 0;
-	font-size:0.9em; 
+	font-size:1em; 
+	display: flex;
+	align-items: center;
 }
 ul.tag-men li span.women1{
-	  margin-left: 9em;
+	  /*margin-left: 9em;*/
+	  min-width: 120px;
+	  max-width: 150px;
 }
 a.add-cart {
   text-decoration: none;
@@ -1168,7 +1186,7 @@ h3.real{
   border-bottom: 1px solid #000;
    margin: 0 0.5em 1em;
   font-size: 2em;
-  font-family: 'Lato', serif;
+  /*font-family: 'Lato', serif;*/
 }
 /*----*/
 .star-on {
@@ -1211,7 +1229,7 @@ h3.real{
 	color:#000;
 	background:#eee ;
 	padding:10px 16px;
-	  font-family: 'Lato', serif;
+	/*font-family: 'Lato', serif;*/
 	text-decoration: none;
 }
 
@@ -1243,7 +1261,7 @@ padding: 1em 0;
 	font-size:1em;
 	line-height:1.7em;
 	padding:0 0 1em;
-	  font-family: 'Lato', serif;
+	/*font-family: 'Lato', serif;*/
 }
 .facts ul li{
 	list-style:none;
@@ -1259,8 +1277,8 @@ padding: 1em 0;
 .color p,.color span{
 	color:#000;
 	font-size:1em;
-	  font-family: 'Lato', serif;
-	    float: left;
+	/*font-family: 'Lato', serif;*/
+	float: left;
 		
 }
 .color p{
@@ -1268,24 +1286,38 @@ padding: 1em 0;
 }
 .top-comment-left{
 	float: left;
-	width: 13%;
+	width: 10%;
 }
-.top-comment-right{
+.top-comment-left .avatar-icon {
+	width: 3em;
+	height: 3em;
+	background-color: #c7c7c7;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2em;
+	margin-left: 2em;
+}
+.top-comment-left i {
+	font-size: 30px;
+}
+.top-comment-right {
 	float: left;
-	width:84%;
-	margin-left:1em;
-	background:#f8f8f8;
-	padding:2em ;
+	width: 84%;
+	margin-left: 1em;
+	background: #f8f8f8;
+	padding: 2em;
 }
 .top-comment-right h6{
 	color:#000;
 	font-size:0.8em;
-	font-family: 'Lato', serif;
+	/*font-family: 'Lato', serif;*/
 }
 .top-comment-right p{
 	color:#000;
 	font-size:1em;
-	  margin: 1em 0em 0 1em;
+	margin-top: 1em;
 }
 a.add-re{
 	text-decoration: none;
@@ -1296,6 +1328,7 @@ a.add-re{
   text-transform: uppercase;
   margin-top: 2em;
   display: inline-block;
+  cursor: pointer;
 }
 a.add-re:hover{
 	
@@ -1310,9 +1343,39 @@ a.add-re:hover{
 	margin: 2em 0;
 	
 }
+.show{
+	display: block;
+}
+.comment-action{
+	display: none;
+	margin-top: 2em;
+	width: 100%;
+	padding: 1em;
+	border: 0.125px solid #A6A6A6;
+	border-radius: 4px;
+}
+.comment-action input{
+	padding: 24px 12px;
+	outline: none;
+	border: none;
+	width: 100%;
+}
+.comment-action button{
+	border: none;
+	outline: none;
+	margin-top: 1em;
+	padding: 4px 12px;
+	border-radius:2px;
+	font-size: 1.1em;
+	color: #fff;
+	background-color: #EF5F21;
+}
+.comment-action button:hover{
+	opacity:0.6;
+}
 /*--//single--*/
 .register {
-	padding: 4em 0 ;
+	padding: 0;
 }
 /*--register--*/
 .register h1{
@@ -1842,12 +1905,13 @@ h6.best2 {
 .single-top-in {
   width: 52%;
 }
-.available ul li select {
+/*.available ul li select {
   margin-left: 9%;
 }
 .available ul li.size-in select {
   margin-left: 13%;
-}
+}*/
+
 }
 @media(max-width:768px){
 .h_menu4 {
@@ -1947,12 +2011,12 @@ width:33.3%;
 .single-para h4 {
   font-size: 2em;
 }
-.available ul li select {
+/*.available ul li select {
   margin-left: 14.5%;
 }
 .available ul li.size-in select {
   margin-left: 16.5%;
-}
+}*/
 .left-account {
   margin-top: 2em;
 }
@@ -2324,12 +2388,12 @@ a.item_add p.number {
 .single-para h4 {
   font-size: 1.5em;
 }
-.available ul li select {
+/*.available ul li select {
   margin-left: 6.5%;
 }
 .available ul li.size-in select {
   margin-left: 10.5%;
-}
+}*/
 .cd-tabs.is-ended {
   margin: 1em 0 1em;
   padding: 0 0em;

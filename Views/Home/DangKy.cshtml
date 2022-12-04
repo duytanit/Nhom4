@@ -6,10 +6,15 @@
 @{
     ViewBag.Title = "DangKy";
     Layout = "~/Views/Layout/ProductLayout.cshtml";
+    if (ViewBag.ThongBao3 != null)
+    {
+        <script> alert("@ViewBag.ThongBao3")</script>
+    }
 }
-<div class="DangKy">
+<div class="container">
     <div class=" register">
         <h1>ĐĂNG KÝ THÀNH VIÊN</h1>
+        
         @using (Html.BeginForm())
         {
             <div class="col-md-6 register-top-grid">
@@ -32,6 +37,13 @@
                 <div>
                     <span>Tài khoản</span>
                     @Html.TextBox("TaiKhoan")
+                    @{
+                        if (ViewBag.ThongBao1 != null)
+                        {
+                            <h5 style="color:red;">@ViewBag.ThongBao1</h5>
+                        }
+                    }
+
                 </div>
                 <div>
                     <span>Mật khẩu</span>
@@ -43,12 +55,17 @@
                 </div>
                 <div>
                     @Html.MathCaptcha()
+                    @{
+                        if (ViewBag.ThongBao2 != null)
+                        {
+                            <h5 style="color:red;">@ViewBag.ThongBao2</h5>
+                        }
+                    }
                 </div>
                 <input type="submit" value="Đăng ký">
 
             </div>
-            <div class="clearfix"> </div>
+            <div class="clearfix"></div>
         }
     </div>
 </div>
-<h1 style="color:red;">@ViewBag.ThongBao</h1>

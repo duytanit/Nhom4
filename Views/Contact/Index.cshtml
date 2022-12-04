@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+<div class="contact">
+
+    <div class="container">
+        <h1>Liên Hệ</h1>
+        <div class="contact-form">
+
+            <div class="col-md-8 contact-grid">
+                <form>
+                    <input type="text" value="Tên" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Tên';}">
+
+                    <input type="text" value="Email" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Email';}">
+                    <input type="text" value="Tiêu đề" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Tiêu đề';}">
+
+                    <textarea cols="77" rows="6" value=" " onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'Lời nhắn';}">Lời nhắn</textarea>
+                    <div class="send">
+                        <input type="submit" value="Gửi">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4 contact-in">
+                <div class="address-more">
+                    <h4>Địa chỉ</h4>
+                    <p>Đại học Công Nghiệp Hà Nội</p>
+                    <p>Số 298 Đ. Cầu Diễn, Minh Khai, Bắc Từ Liêm, Hà Nội, Việt Nam</p>
+                    <p>Tel:1115550001</p>
+                    <p>Fax:190-4509-494</p>
+                    <p>Email:<a href="mailto:contact@example.com"> contact@example.com</a></p>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7665.16941094165!2d105.72826150147233!3d21.05354019657422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345457e292d5bf%3A0x20ac91c94d74439a!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2hp4buHcCBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1669959417590!5m2!1svi!2s"></iframe>    
+        </div>
+    </div>
+
+</div>
+

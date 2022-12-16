@@ -26,5 +26,10 @@ namespace WebBanHang.Controllers
                 .Where(d=>d.DonDatHang.NgayDat.Value.Date > Convert.ToDateTime(fdate) && d.DonDatHang.NgayDat < Convert.ToDateTime(tdate));
             return View(ddh.ToList());
         }
+        public ActionResult SanPhamPartial()
+        {
+            var sp = db.SanPhams;
+            return PartialView(sp);
+        }
     }
 }

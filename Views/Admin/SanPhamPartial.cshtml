@@ -1,0 +1,46 @@
+﻿@using WebBanHang.Models
+@model IEnumerable<SanPham>
+<style>
+    .child{
+        display: none;
+    }
+    .parent:hover .child{
+        display: block;
+    }
+    .child1 {
+        display: none;
+    }
+
+    .parent1:hover .child1 {
+        display: block;
+    }
+</style>
+<ul>
+    <li class="parent"><a href="#"><i class="fa fa-th-large"></i></a> @Html.ActionLink("Quản lý sản phẩm", "Index", "QuanLySanPham")
+        <ul class="child">
+            @foreach (var GroupItem in Model.GroupBy(n => n.LoaiSanPham))
+            {
+                if (GroupItem.Key != null)
+                {
+                    <li class="parent1">
+                        <a href="#">@GroupItem.Key.TenLoai</a>
+
+                        <ul class="child1">
+                            @foreach (var item in GroupItem.GroupBy(n => n.NhaSanXuat))
+                            {
+                                if (item != null)
+                                {
+                                    <li style="width: 100%;"><a href="@Url.Action("SanPham","QuanLySanPham",new {@MaLoaiSP=GroupItem.Key.MaLoaiSP,@MaNSX = item.Key.MaNSX })">@item.Key.TenNSX</a></li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                    <br />
+                }
+
+            }
+        </ul>
+    </li>
+
+        
+</ul>

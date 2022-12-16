@@ -23,7 +23,37 @@ namespace WebBanHang.Controllers
             int pageSize = 9; //Kích thước trang
             int pageNumber = (page ?? 1); //Nếu page bằng null thì trả về 1
             return View(sp.ToPagedList(pageNumber, pageSize));
-        }      
+        }
+
+        public ActionResult SanPham(int? MaLoaiSP, int? MaNSX, int? page, string tim)
+        {
+            //khong che k cho ko dang nhap ma truy cap vao san pham
+            //if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
+            if (MaLoaiSP == null && MaNSX == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+            var lstSP = db.SanPhams.Where(n => n.MaLoaiSP == MaLoaiSP && n.MaNSX == MaNSX);
+            if (!String.IsNullOrEmpty(tim))
+            {
+                lstSP = lstSP.Where(d => d.TenSP.Contains(tim));
+            }
+            if (lstSP.Count() == 0)
+            {
+                return HttpNotFound();
+            }
+            //Thuc hien  phan trang 
+            //Tao bien so  san pham tren trang 
+            int pageSize = 6;
+            //Tao bien thu 2 : so trang hien tai 
+            int PageNumber = (page ?? 1);
+            ViewBag.MaLoaiSP = MaLoaiSP;
+            ViewBag.MaNSX = MaNSX;
+            return View(lstSP.OrderBy(n => n.MaSP).ToPagedList(PageNumber, pageSize));
+        }
 
         public ActionResult ChiTiet(int? id)
         {

@@ -23,7 +23,7 @@
                 if (GroupItem.Key != null)
                 {
                     <li class="parent1">
-                        <a href="#">@GroupItem.Key.TenLoai</a>
+                        <a href="@Url.Action("SanPhamByLoai","QuanLySanPham",new {@MaLoaiSP=GroupItem.Key.MaLoaiSP })">@GroupItem.Key.TenLoai</a>
 
                         <ul class="child1">
                             @foreach (var item in GroupItem.GroupBy(n => n.NhaSanXuat))

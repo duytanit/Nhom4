@@ -932,6 +932,7 @@
     <Content Include="Views\Blog\Single.cshtml" />
     <Content Include="Views\Admin\SanPhamPartial.cshtml" />
     <Content Include="Views\QuanLySanPham\SanPham.cshtml" />
+    <Content Include="Views\QuanLySanPham\SanPhamByLoai.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
